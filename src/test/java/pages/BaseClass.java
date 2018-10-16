@@ -7,32 +7,34 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import pages.gis.Authorization;
 import utils.ConfigProperties;
 
 import java.util.concurrent.TimeUnit;
-
 
 
 public class BaseClass {
     public static WebDriver driver;
     public static Actions action;
     public static WebDriverWait wait;
-
+    public static Authorization authorization;
 
 
     @Before
-    public void setup(){
-        System.setProperty(ConfigProperties.getTestProperty("whatWebDriver"),ConfigProperties.getTestProperty("whereWebDriver"));
+    public void setup() {
+        System.setProperty(ConfigProperties.getTestProperty("whatWebDriver"), ConfigProperties.getTestProperty("whereWebDriver"));
         driver = new ChromeDriver();
         action = new Actions(driver);
-        wait = new WebDriverWait(driver,5);
+        wait = new WebDriverWait(driver, 5);
+        authorization = new Authorization(driver);
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
-      //  driver.get(ConfigProperties.getTestProperty("clientApplicationModule"));
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        //  driver.get(ConfigProperties.getTestProperty("clientApplicationModule"));
 
     }
+
     @After
-    public  void toEnd(){
+    public void toEnd() {
         driver.close();
     }
 }
