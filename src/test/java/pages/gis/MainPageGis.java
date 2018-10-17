@@ -8,12 +8,11 @@ import utils.ConfigProperties;
 
 public class MainPageGis {
     public WebDriver webDriver;
-    final String pathLogout="///p[@innertext='"+ConfigProperties.getTestProperty("gis.login")+"']";
 
     public MainPageGis(WebDriver driver) {
         PageFactory.initElements(driver, this);
         this.webDriver = driver;
-            }
+    }
 
 
     @FindBy(xpath = "//div[@id='root']/section/section[1]/section[1]/div[2]")
@@ -35,27 +34,29 @@ public class MainPageGis {
     private WebElement buttonLogout;
 
 
-    public String getInputSearchCatalog(){
+    public String getInputSearchCatalog() {
         return inputSearchCatalog.getAttribute("placeholder");
     }
 
-    public void clickButtonLegend(){
+    public void clickButtonLegend() {
         buttonLegend.click();
     }
-    public void clickButtonLibrary(){
+
+    public void clickButtonLibrary() {
         buttonLibrary.click();
     }
-    public WebElement getButtonCatalog(){
+
+    public WebElement getButtonCatalog() {
 
         return buttonCatalog;
     }
 
 
-    public String getInputSrchLayerCatalog(){
+    public String getInputSrchLayerCatalog() {
         return inputSrchLayerCatalog.getText();
     }
 
-    public WebElement getButtonLogout(){
+    public WebElement getButtonLogout() {
         return buttonLogout;
     }
 }
