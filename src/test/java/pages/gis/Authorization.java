@@ -33,4 +33,8 @@ public class Authorization {
     public void clickButtonLogin() {
         buttonLogin.click();
     }
+
+    public WebElement getButtonLogin() {
+        return buttonLogin;
+    }
 }
