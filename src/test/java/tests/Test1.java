@@ -31,9 +31,9 @@ public class Test1 extends BaseClass {
         }
         //проходимся по вкладками попутно проверяя наличие объектов
         mainPageGis.clickButtonLegend();
-        /*Thread.sleep(1000);
+        action.moveToElement(mainPageGis.getButtonCatalog()).click().perform();
+        Thread.sleep(1000);
        mainPageGis.clickButtonLibrary();
-       // action.moveToElement(mainPageGis.getButtonLibrary()).click().perform();
         wait.until(visibilityOfElementLocated(By.cssSelector("[placeholder]")));
         if (driver.findElement(By.cssSelector("[placeholder]")).isDisplayed()) {
             Assert.assertEquals("поиск",mainPageGis.getInputSearchCatalog());
@@ -41,8 +41,8 @@ public class Test1 extends BaseClass {
         }
         if (driver.findElement(By.cssSelector(".ant-select-selection__rendered [unselectable]")).isDisplayed()) {
             Assert.assertEquals("выбранные слои",mainPageGis.getInputSrchLayerCatalog());
-        }*/
-        action.moveToElement(mainPageGis.getButtonCatalog()).click().perform();
+        }
+
         action.moveToElement(mainPageGis.getButtonLogout()).click().perform();
         Thread.sleep(2000);
         //проверяем что разлогинились
