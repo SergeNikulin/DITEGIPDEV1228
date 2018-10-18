@@ -8,21 +8,20 @@ import utils.ConfigProperties;
 
 public class MainPageGis {
     public WebDriver webDriver;
-    final String pathLogout="///p[@innertext='"+ConfigProperties.getTestProperty("gis.login")+"']";
 
     public MainPageGis(WebDriver driver) {
         PageFactory.initElements(driver, this);
         this.webDriver = driver;
-            }
+    }
 
 
     @FindBy(xpath = "//div[@id='root']/section/section[1]/section[1]/div[2]")
     private WebElement buttonLegend;
 
-    @FindBy(xpath = "//div[@id='root']/section/section[1]/section[1]/div[3]")
+    @FindBy(css = ".sc-gPEVay div:nth-of-type(3)")
     private WebElement buttonLibrary;
 
-    @FindBy(xpath = "//div[@id='root']/section/section[1]//img[@src='./tabs/catalog.svg']")
+    @FindBy(xpath = "//div[@id='root']/section/section[1]/section[1]/div[4]")
     private WebElement buttonCatalog;
 
     @FindBy(css = "[placeholder]")
@@ -35,27 +34,32 @@ public class MainPageGis {
     private WebElement buttonLogout;
 
 
-    public String getInputSearchCatalog(){
+    public String getInputSearchCatalog() {
         return inputSearchCatalog.getAttribute("placeholder");
     }
 
-    public void clickButtonLegend(){
+    public void clickButtonLegend() {
         buttonLegend.click();
     }
-    public void clickButtonLibrary(){
+
+    public void clickButtonLibrary() {
         buttonLibrary.click();
     }
-    public WebElement getButtonCatalog(){
+    public WebElement getButtonLibrary(){
+        return buttonLibrary;
+    }
+
+    public WebElement getButtonCatalog() {
 
         return buttonCatalog;
     }
 
 
-    public String getInputSrchLayerCatalog(){
+    public String getInputSrchLayerCatalog() {
         return inputSrchLayerCatalog.getText();
     }
 
-    public WebElement getButtonLogout(){
+    public WebElement getButtonLogout() {
         return buttonLogout;
     }
 }

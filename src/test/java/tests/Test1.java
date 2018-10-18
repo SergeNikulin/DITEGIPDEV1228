@@ -23,7 +23,7 @@ public class Test1 extends BaseClass {
         authorization.inputItemPassword(ConfigProperties.getTestProperty("gis.password"));
         authorization.clickButtonLogin();
         //ждем отрисовку карты
-        Thread.sleep(5000);
+        Thread.sleep(500);
         //еще ждем
         wait.until(visibilityOfElementLocated(By.xpath("//div[@id='root']/section/div[2]/div[5]")));
         if (!driver.findElement(By.xpath("//div[@id='root']/section/section[1]/section[2]//span[.='Проект для теста']")).isDisplayed()) {
@@ -31,7 +31,10 @@ public class Test1 extends BaseClass {
         }
         //проходимся по вкладками попутно проверяя наличие объектов
         mainPageGis.clickButtonLegend();
-        mainPageGis.clickButtonLibrary();
+        action.moveToElement(mainPageGis.getButtonCatalog()).click().perform();
+        Thread.sleep(1000);
+       mainPageGis.clickButtonLibrary();
+        wait.until(visibilityOfElementLocated(By.cssSelector("[placeholder]")));
         if (driver.findElement(By.cssSelector("[placeholder]")).isDisplayed()) {
             Assert.assertEquals("поиск",mainPageGis.getInputSearchCatalog());
 
@@ -39,10 +42,36 @@ public class Test1 extends BaseClass {
         if (driver.findElement(By.cssSelector(".ant-select-selection__rendered [unselectable]")).isDisplayed()) {
             Assert.assertEquals("выбранные слои",mainPageGis.getInputSrchLayerCatalog());
         }
-        action.moveToElement(mainPageGis.getButtonCatalog()).click().perform();
+
         action.moveToElement(mainPageGis.getButtonLogout()).click().perform();
-        Thread.sleep(1000);
+        Thread.sleep(2000);
         //проверяем что разлогинились
         Assert.assertTrue(authorization.getButtonLogin().isDisplayed());
+    }
+
+    @Test
+    public void test5() throws Exception {
+        driver.get(ConfigProperties.getTestProperty("administrationModule"));
+        wait.until(visibilityOfElementLocated(By.cssSelector(".anticon-eye")));
+
+        authorizationAdmin.setLogin(ConfigProperties.getTestProperty("admin.login"));
+        authorizationAdmin.setPassword(ConfigProperties.getTestProperty("admin.password"));
+        authorizationAdmin.clickButtonLogin();
+
+        wait.until(visibilityOfElementLocated(By.cssSelector(".anticon-user")));
+        desktopAdmin.clickButtonUsers();
+        wait.until(visibilityOfElementLocated(By.xpath("//div[@id='root']/div/div//h1")));
+        desktopAdmin.clickJumpToMain();
+        desktopAdmin.clickButtonRoles();
+        wait.until(visibilityOfElementLocated(By.xpath("//div[@id='root']/div/div//h1")));
+        desktopAdmin.clickJumpToMain();
+        desktopAdmin.clickButtonOrg();
+        wait.until(visibilityOfElementLocated(By.xpath("//div[@id='root']/div/div//h1")));
+        desktopAdmin.clickJumpToMain();
+        wait.until(visibilityOfElementLocated(By.cssSelector(".anticon-user")));
+        action.moveToElement(desktopAdmin.getUserMenu()).perform();
+        desktopAdmin.clickButtonLogout();
+        Thread.sleep(1000);
+        Assert.assertTrue(driver.findElement(By.cssSelector(".anticon-eye")).isDisplayed());
     }
 }
