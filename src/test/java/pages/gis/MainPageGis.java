@@ -18,10 +18,10 @@ public class MainPageGis {
     @FindBy(xpath = "//div[@id='root']/section/section[1]/section[1]/div[2]")
     private WebElement buttonLegend;
 
-    @FindBy(xpath = "//div[@id='root']/section/section[1]/section[1]/div[3]")
+    @FindBy(css = ".sc-gPEVay div:nth-of-type(3)")
     private WebElement buttonLibrary;
 
-    @FindBy(xpath = "//div[@id='root']/section/section[1]//img[@src='./tabs/catalog.svg']")
+    @FindBy(xpath = "//div[@id='root']/section/section[1]/section[1]/div[4]")
     private WebElement buttonCatalog;
 
     @FindBy(css = "[placeholder]")
@@ -44,6 +44,9 @@ public class MainPageGis {
 
     public void clickButtonLibrary() {
         buttonLibrary.click();
+    }
+    public WebElement getButtonLibrary(){
+        return buttonLibrary;
     }
 
     public WebElement getButtonCatalog() {

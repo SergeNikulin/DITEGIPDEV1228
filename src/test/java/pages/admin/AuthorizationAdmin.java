@@ -19,7 +19,7 @@ public class AuthorizationAdmin {
     @FindBy (xpath = "*//input[@name='password']")
     private WebElement password;
 
-    @FindBy (xpath = "///button[@innertext='Войти']")
+    @FindBy (xpath = "//button[.='Войти']")
     private WebElement buttonLogin;
 
     public void setLogin(String text) {
