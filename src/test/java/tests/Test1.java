@@ -45,4 +45,16 @@ public class Test1 extends BaseClass {
         //проверяем что разлогинились
         Assert.assertTrue(authorization.getButtonLogin().isDisplayed());
     }
+
+    @Test
+    public void test5() throws Exception{
+        driver.get(ConfigProperties.getTestProperty("administrationModule"));
+        wait.until(visibilityOfElementLocated(By.cssSelector(".anticon-eye")));
+
+        authorizationAdmin.setLogin(ConfigProperties.getTestProperty("admin.login"));
+        authorizationAdmin.setPassword(ConfigProperties.getTestProperty("admin.password"));
+        authorizationAdmin.clickButtonLogin();
+
+
+    }
 }

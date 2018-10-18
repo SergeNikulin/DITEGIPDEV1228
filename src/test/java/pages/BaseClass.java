@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import pages.admin.AuthorizationAdmin;
 import pages.gis.Authorization;
 import pages.gis.MainPageGis;
 import utils.ConfigProperties;
@@ -19,6 +20,7 @@ public class BaseClass {
     protected static WebDriverWait wait;
     protected static Authorization authorization;
     protected static MainPageGis mainPageGis;
+    protected static AuthorizationAdmin authorizationAdmin;
 
 
     @Before
@@ -29,6 +31,7 @@ public class BaseClass {
         wait = new WebDriverWait(driver, 5);
         authorization = new Authorization(driver);
         mainPageGis = new MainPageGis(driver);
+        authorizationAdmin=new AuthorizationAdmin(driver);
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
