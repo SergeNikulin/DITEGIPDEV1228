@@ -3,6 +3,7 @@ package tests;
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import pages.BaseClass;
 import pages.docs.SomeVariables;
 import utils.ConfigProperties;
@@ -83,10 +84,16 @@ public class Test1 extends BaseClass {
         Assert.assertTrue(mainPageDocs.getReadmeResource().isDisplayed());
         Assert.assertEquals(mainPageDocs.getReadmeResource().getText(), "Ресурсы");
         Assert.assertTrue(mainPageDocs.getReadmeBegin().isDisplayed());
-        Assert.assertEquals(mainPageDocs.getReadmeBegin().getText(),"Старт");
+        Assert.assertEquals(mainPageDocs.getReadmeBegin().getText(), "Старт");
         Assert.assertTrue(mainPageDocs.getReadmeBlockCode().isDisplayed());
         //здесь и далее будут использоваться переменные типа String из класса SomeVariables
-        Assert.assertEquals(mainPageDocs.getReadmeBlockCode().getText(),SomeVariables.readmeBlockCode);
+        Assert.assertEquals(mainPageDocs.getReadmeBlockCode().getText(), SomeVariables.readmeBlockCode);
+        mainPageDocs.clickGivinLayerWMS();
+        Thread.sleep(500);
+        Assert.assertEquals(mainPageDocs.getCheckLink().getText(), SomeVariables.layersWMS);
+        driver.switchTo().frame(driver.findElement(By.xpath("/html//article[@id='main']//iframe")));
+        driver.switchTo().frame(driver.findElement(By.id("app")));
+        Assert.assertTrue(mainPageDocs.getPathCodeBlockLayer().isDisplayed());
 
     }
 }

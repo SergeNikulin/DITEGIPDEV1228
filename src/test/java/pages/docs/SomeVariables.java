@@ -12,4 +12,5 @@ public class SomeVariables {
             "\n" +
             "</script>";
 
+    public static String layersWMS = "https://gost-jira.atlassian.net/wiki/spaces/EGIPAPIDOC/pages/436699311/API";
 }

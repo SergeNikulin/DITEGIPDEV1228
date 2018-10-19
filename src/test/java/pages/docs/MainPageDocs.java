@@ -23,6 +23,30 @@ public class MainPageDocs {
     @FindBy (css = ":nth-child(10) .lang-html")
     private WebElement readmeBlockCode;
 
+    @FindBy (linkText = "Получение слоев (WMS)")
+    private WebElement givinLayerWMS;
+
+    @FindBy (css = "[href='https\\:\\/\\/gost-jira\\.atlassian\\.net\\/wiki\\/spaces\\/EGIPAPIDOC\\/pages\\/436699311\\/API']")
+    private WebElement checkLink;
+
+    @FindBy(id="container")
+    private WebElement layerBlockCode;
+
+    @FindBy (xpath = "//div[@id='map']")
+    private WebElement pathCodeBlockLayer;
+
+    public WebElement getPathCodeBlockLayer(){
+        return pathCodeBlockLayer;
+    }
+
+    public WebElement getLayerBlockCode(){
+        return layerBlockCode;
+    }
+
+    public WebElement getCheckLink(){
+        return checkLink;
+    }
+
     public WebElement getReadmeResource(){
         return readmeResource;
     }
@@ -33,5 +57,9 @@ public class MainPageDocs {
 
     public WebElement getReadmeBlockCode() {
         return readmeBlockCode;
+    }
+
+    public void clickGivinLayerWMS(){
+        givinLayerWMS.click();
     }
 }
