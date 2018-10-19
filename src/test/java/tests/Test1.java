@@ -4,6 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import pages.BaseClass;
+import pages.docs.SomeVariables;
 import utils.ConfigProperties;
 
 import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOfElementLocated;
@@ -11,7 +12,7 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOfElem
 
 public class Test1 extends BaseClass {
 
-    @Test
+  /*  @Test
     public void test1() throws Exception {
 
         //Вход на страницу авторизации
@@ -73,5 +74,19 @@ public class Test1 extends BaseClass {
         desktopAdmin.clickButtonLogout();
         Thread.sleep(1000);
         Assert.assertTrue(driver.findElement(By.cssSelector(".anticon-eye")).isDisplayed());
+    }*/
+
+    @Test
+    public void test3() throws Exception {
+        driver.get(ConfigProperties.getTestProperty("dataConsumerInteractionModule"));
+        wait.until(visibilityOfElementLocated(By.cssSelector(".app-name-link")));
+        Assert.assertTrue(mainPageDocs.getReadmeResource().isDisplayed());
+        Assert.assertEquals(mainPageDocs.getReadmeResource().getText(), "Ресурсы");
+        Assert.assertTrue(mainPageDocs.getReadmeBegin().isDisplayed());
+        Assert.assertEquals(mainPageDocs.getReadmeBegin().getText(),"Старт");
+        Assert.assertTrue(mainPageDocs.getReadmeBlockCode().isDisplayed());
+        //здесь и далее будут использоваться переменные типа String из класса SomeVariables
+        Assert.assertEquals(mainPageDocs.getReadmeBlockCode().getText(),SomeVariables.readmeBlockCode);
+
     }
 }
