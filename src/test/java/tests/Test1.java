@@ -4,7 +4,6 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebElement;
 import pages.BaseClass;
 import pages.docs.SomeVariables;
 import utils.ConfigProperties;
@@ -14,7 +13,7 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOfElem
 
 public class Test1 extends BaseClass {
 
-  /*  @Test
+    @Test
     public void test1() throws Exception {
 
         //Вход на страницу авторизации
@@ -72,11 +71,11 @@ public class Test1 extends BaseClass {
         wait.until(visibilityOfElementLocated(By.xpath("//div[@id='root']/div/div//h1")));
         desktopAdmin.clickJumpToMain();
         wait.until(visibilityOfElementLocated(By.cssSelector(".anticon-user")));
-        action.moveToElement(desktopAdmin.getUserMenu()).perform();
+        action.moveToElement(desktopAdmin.getUserMenu()).click().perform();
         desktopAdmin.clickButtonLogout();
         Thread.sleep(1000);
         Assert.assertTrue(driver.findElement(By.cssSelector(".anticon-eye")).isDisplayed());
-    }*/
+    }
 
     @Test
     public void test3() throws Exception {
