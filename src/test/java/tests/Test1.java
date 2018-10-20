@@ -3,6 +3,7 @@ package tests;
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import pages.BaseClass;
 import pages.docs.SomeVariables;
@@ -89,11 +90,29 @@ public class Test1 extends BaseClass {
         //здесь и далее будут использоваться переменные типа String из класса SomeVariables
         Assert.assertEquals(mainPageDocs.getReadmeBlockCode().getText(), SomeVariables.readmeBlockCode);
         mainPageDocs.clickGivinLayerWMS();
-        Thread.sleep(500);
+        Thread.sleep(1000);
         Assert.assertEquals(mainPageDocs.getCheckLink().getText(), SomeVariables.layersWMS);
         driver.switchTo().frame(driver.findElement(By.xpath("/html//article[@id='main']//iframe")));
         driver.switchTo().frame(driver.findElement(By.id("app")));
         Assert.assertTrue(mainPageDocs.getPathCodeBlockLayer().isDisplayed());
+        driver.switchTo().defaultContent();
+        driver.switchTo().frame(driver.findElement(By.xpath("/html//article[@id='main']//iframe")));
+        Assert.assertEquals(mainPageDocs.getLayerBlockCode().getText(), SomeVariables.layersBlockCode);
+        driver.switchTo().defaultContent();
+        mainPageDocs.clickSlidebar();
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();"
+                , mainPageDocs.getLinkCluster());
+        mainPageDocs.clickLinkCluster();
+        wait.until(visibilityOfElementLocated(By.xpath("//article[@id='main']//p[.='функция кластеризации точек выбранного слоя']")));
+        Assert.assertEquals(mainPageDocs.getHeadCluster().getText(), "Кластеризация точек выбранного слоя");
+        driver.switchTo().frame(driver.findElement(By.xpath("/html//article[@id='main']//iframe")));
+        driver.switchTo().frame(driver.findElement(By.id("app")));
+        mainPageDocs.clickButtonCluster();
+        driver.switchTo().defaultContent();
+        driver.switchTo().frame(driver.findElement(By.xpath("/html//article[@id='main']//iframe")));
+        Assert.assertTrue(mainPageDocs.getLayerBlockCode().getText().contains("document.getElementById('bottom')"));
+        driver.switchTo().defaultContent();
+
 
     }
 }

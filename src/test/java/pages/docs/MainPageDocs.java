@@ -9,49 +9,81 @@ public class MainPageDocs {
 
     public WebDriver driver;
 
-    public MainPageDocs(WebDriver driver){
-        PageFactory.initElements(driver,this);
-        this.driver=driver;
+    public MainPageDocs(WebDriver driver) {
+        PageFactory.initElements(driver, this);
+        this.driver = driver;
     }
 
-    @FindBy (id="Ресурсы")
+    @FindBy(id = "Ресурсы")
     private WebElement readmeResource;
 
-    @FindBy(id="Старт")
+    @FindBy(id = "Старт")
     private WebElement readmeBegin;
 
-    @FindBy (css = ":nth-child(10) .lang-html")
+    @FindBy(css = ":nth-child(10) .lang-html")
     private WebElement readmeBlockCode;
 
-    @FindBy (linkText = "Получение слоев (WMS)")
+    @FindBy(linkText = "Получение слоев (WMS)")
     private WebElement givinLayerWMS;
 
-    @FindBy (css = "[href='https\\:\\/\\/gost-jira\\.atlassian\\.net\\/wiki\\/spaces\\/EGIPAPIDOC\\/pages\\/436699311\\/API']")
+    @FindBy(css = "[href='https\\:\\/\\/gost-jira\\.atlassian\\.net\\/wiki\\/spaces\\/EGIPAPIDOC\\/pages\\/436699311\\/API']")
     private WebElement checkLink;
 
-    @FindBy(id="container")
+    @FindBy(xpath = "//div[@id='container']/div[@class='monaco-editor vs-dark']")
     private WebElement layerBlockCode;
 
-    @FindBy (xpath = "//div[@id='map']")
+    @FindBy(xpath = "//div[@id='map']")
     private WebElement pathCodeBlockLayer;
 
-    public WebElement getPathCodeBlockLayer(){
+    @FindBy(css = "[href='\\#\\/examples\\/layers\\/cluster\\/cluster']")
+    private WebElement linkCluster;
+
+    @FindBy(css = ".anchor span")
+    private WebElement headCluster;
+
+    @FindBy(css = ".sidebar")
+    private WebElement slidebar;
+
+    @FindBy(id="bottom")
+    private WebElement buttonCluster;
+
+    public void clickButtonCluster(){
+        buttonCluster.click();
+    }
+
+    public void clickSlidebar() {
+        slidebar.click();
+    }
+
+    public WebElement getLinkCluster() {
+        return linkCluster;
+    }
+
+    public WebElement getHeadCluster() {
+        return headCluster;
+    }
+
+    public void clickLinkCluster() {
+        linkCluster.click();
+    }
+
+    public WebElement getPathCodeBlockLayer() {
         return pathCodeBlockLayer;
     }
 
-    public WebElement getLayerBlockCode(){
+    public WebElement getLayerBlockCode() {
         return layerBlockCode;
     }
 
-    public WebElement getCheckLink(){
+    public WebElement getCheckLink() {
         return checkLink;
     }
 
-    public WebElement getReadmeResource(){
+    public WebElement getReadmeResource() {
         return readmeResource;
     }
 
-    public WebElement getReadmeBegin(){
+    public WebElement getReadmeBegin() {
         return readmeBegin;
     }
 
@@ -59,7 +91,7 @@ public class MainPageDocs {
         return readmeBlockCode;
     }
 
-    public void clickGivinLayerWMS(){
+    public void clickGivinLayerWMS() {
         givinLayerWMS.click();
     }
 }
