@@ -8,6 +8,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.admin.AuthorizationAdmin;
 import pages.admin.DesktopAdmin;
+import pages.docs.MainPageDocs;
 import pages.gis.Authorization;
 import pages.gis.MainPageGis;
 import utils.ConfigProperties;
@@ -23,7 +24,7 @@ public class BaseClass {
     protected static MainPageGis mainPageGis;
     protected static AuthorizationAdmin authorizationAdmin;
     protected static DesktopAdmin desktopAdmin;
-
+    protected static MainPageDocs mainPageDocs;
 
     @Before
     public void setup() {
@@ -35,6 +36,7 @@ public class BaseClass {
         mainPageGis = new MainPageGis(driver);
         authorizationAdmin = new AuthorizationAdmin(driver);
         desktopAdmin = new DesktopAdmin(driver);
+        mainPageDocs = new MainPageDocs(driver);
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
