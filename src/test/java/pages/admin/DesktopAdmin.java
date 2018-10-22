@@ -3,14 +3,12 @@ package pages.admin;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
-public class DesktopAdmin {
-    public WebDriver driver;
+
+public class DesktopAdmin extends AuthorizationAdmin{
 
     public DesktopAdmin(WebDriver driver) {
-        PageFactory.initElements(driver,this);
-        this.driver = driver;
+        super(driver);
     }
 
     @FindBy (xpath = "//main//a[@href='#/users']")
@@ -30,6 +28,7 @@ public class DesktopAdmin {
 
     @FindBy (css = ".anticon-user")
     private WebElement userMenu;
+
 
     public WebElement getUserMenu(){
         return userMenu;

@@ -35,14 +35,14 @@ public class Test1 extends BaseClass {
         mainPageGis.clickButtonLegend();
         action.moveToElement(mainPageGis.getButtonCatalog()).click().perform();
         Thread.sleep(1000);
-       mainPageGis.clickButtonLibrary();
+        mainPageGis.clickButtonLibrary();
         wait.until(visibilityOfElementLocated(By.cssSelector("[placeholder]")));
         if (driver.findElement(By.cssSelector("[placeholder]")).isDisplayed()) {
-            Assert.assertEquals("поиск",mainPageGis.getInputSearchCatalog());
+            Assert.assertEquals("поиск", mainPageGis.getInputSearchCatalog());
 
         }
         if (driver.findElement(By.cssSelector(".ant-select-selection__rendered [unselectable]")).isDisplayed()) {
-            Assert.assertEquals("выбранные слои",mainPageGis.getInputSrchLayerCatalog());
+            Assert.assertEquals("выбранные слои", mainPageGis.getInputSrchLayerCatalog());
         }
 
         action.moveToElement(mainPageGis.getButtonLogout()).click().perform();
@@ -111,6 +111,39 @@ public class Test1 extends BaseClass {
         driver.switchTo().frame(driver.findElement(By.xpath("/html//article[@id='main']//iframe")));
         Assert.assertTrue(mainPageDocs.getLayerBlockCode().getText().contains("document.getElementById('bottom')"));
         driver.switchTo().defaultContent();
+    }
+
+    @Test
+    public void test2() throws Exception {
+        driver.get(ConfigProperties.getTestProperty("dataProviderInteractionModule"));
+        //Проверяем первую вкладку
+        wait.until(visibilityOfElementLocated(By.cssSelector("#__BVID__3__BV_tab_controls_ .nav-item:nth-of-type(1) [href]")));
+        Assert.assertEquals(fromTables.getDataConnect().getText(), "Данные для подключения");
+        Assert.assertTrue(fromTables.getDataConnect().isDisplayed());
+        Assert.assertEquals(fromTables.getMetadata().getText(), "Метаданные слоя");
+        Assert.assertTrue(fromTables.getMetadata().isDisplayed());
+        //проверяем что элемента не существует
+        Assert.assertTrue(!fromTables.checkGetSelectTables());
+        fromTables.clickButtonGetTables();
+        //проверяем что элемент есть
+        Assert.assertTrue(fromTables.checkGetSelectTables());
+
+        fromArchive.clickFromArchive();
+        Assert.assertEquals(fromArchive.checkFileName(), "name для импортируемого слоя");
+        Assert.assertEquals(fromArchive.checkFileReprojectionable(), "reprojectionable");
+        Assert.assertEquals(fromArchive.checkFileCharset(), "Кодировка файла");
+
+        fromODOPM.clickLinkODOPM();
+        Assert.assertEquals(fromODOPM.getDataConnect().getText(), "Данные для подключения");
+        Assert.assertEquals(fromODOPM.getDataBase().getText(), "database (или SID)");
+        Assert.assertTrue(!fromODOPM.getButtonImport().isEnabled());
+
+        jms.clickLinkJMS();
+        jms.setTextArea("{ }");
+        jms.clickRadioButtonFirst();
+        jms.clickButtonSend();
+        Assert.assertEquals(jms.getResultMessage(),"×\n" +
+                "Сообщение отправлено успешно");
 
 
     }

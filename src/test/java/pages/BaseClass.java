@@ -9,6 +9,10 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.admin.AuthorizationAdmin;
 import pages.admin.DesktopAdmin;
 import pages.docs.MainPageDocs;
+import pages.egipImport.FromArchive;
+import pages.egipImport.FromODOPM;
+import pages.egipImport.FromTables;
+import pages.egipImport.JMS;
 import pages.gis.Authorization;
 import pages.gis.MainPageGis;
 import utils.ConfigProperties;
@@ -25,6 +29,10 @@ public class BaseClass {
     protected static AuthorizationAdmin authorizationAdmin;
     protected static DesktopAdmin desktopAdmin;
     protected static MainPageDocs mainPageDocs;
+    protected static FromTables fromTables;
+    protected static FromArchive fromArchive;
+    protected static FromODOPM fromODOPM;
+    protected static JMS jms;
 
     @Before
     public void setup() {
@@ -37,6 +45,10 @@ public class BaseClass {
         authorizationAdmin = new AuthorizationAdmin(driver);
         desktopAdmin = new DesktopAdmin(driver);
         mainPageDocs = new MainPageDocs(driver);
+        fromTables = new FromTables(driver);
+        fromArchive = new FromArchive(driver);
+        fromODOPM = new FromODOPM(driver);
+        jms = new JMS(driver);
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
