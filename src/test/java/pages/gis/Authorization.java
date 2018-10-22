@@ -6,11 +6,11 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class Authorization {
-    public WebDriver webDriver;
+    public WebDriver driver;
 
     public Authorization(WebDriver driver) {
         PageFactory.initElements(driver, this);
-        this.webDriver = driver;
+        this.driver = driver;
     }
 
     @FindBy(id = "login")

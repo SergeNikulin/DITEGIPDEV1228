@@ -6,11 +6,11 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class AuthorizationAdmin {
-    public WebDriver webDriver;
+    public WebDriver driver;
 
     public AuthorizationAdmin(WebDriver driver) {
         PageFactory.initElements(driver, this);
-        this.webDriver = driver;
+        this.driver = driver;
     }
 
     @FindBy (xpath = "*//input[@name='username']")
