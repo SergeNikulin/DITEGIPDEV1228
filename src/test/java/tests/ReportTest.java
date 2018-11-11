@@ -5,6 +5,7 @@ import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.Unirest;
 import org.jtwig.JtwigModel;
 import org.jtwig.JtwigTemplate;
+import org.junit.Ignore;
 import org.junit.Test;
 import pages.BaseReport;
 
