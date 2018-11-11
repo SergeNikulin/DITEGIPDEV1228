@@ -97,7 +97,7 @@ public class ReportTest extends BaseReport {
     String url = "https://egiptest.mos.ru/egip/services/reports/buffer";
     JtwigTemplate templateBody = JtwigTemplate.classpathTemplate("bufferReports.json");
     JtwigModel model = JtwigModel.newModel()
-            .with("layerId", "15638420");
+            .with("layerId", "15641284");
     HttpResponse<JsonNode> jsonResponse = Unirest.post(url)
             .body(templateBody.render(model))
             .asJson();
