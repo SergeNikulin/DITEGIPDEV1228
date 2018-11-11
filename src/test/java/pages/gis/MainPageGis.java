@@ -15,7 +15,7 @@ public class MainPageGis extends Authorization{
     @FindBy(xpath = "//div[@id='root']/section/section[1]/section[1]/div[2]")
     private WebElement buttonLegend;
 
-    @FindBy(css = ".sc-gPEVay div:nth-of-type(3)")
+    @FindBy(xpath = "//*[@id=\"root\"]/section/section[1]/section[1]/div[3]")
     private WebElement buttonLibrary;
 
     @FindBy(xpath = "//div[@id='root']/section/section[1]/section[1]/div[4]")

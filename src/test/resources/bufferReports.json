@@ -1,0 +1,12 @@
+{
+  "layers":
+  [
+    {"layerId":"{{layerId}}",
+      "radius":1,
+      "metricUnit":"KILOMETER"}
+  ],
+  "administrativeDivisionTypes":
+  [
+    "CITY",
+    "DISTRICT"]
+}
