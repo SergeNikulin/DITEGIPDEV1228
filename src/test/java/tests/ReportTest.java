@@ -91,7 +91,19 @@ public class ReportTest extends BaseReport {
         assertEquals("IN_PROGRESS", jsonResponseTask.getBody().getObject().getJSONObject("data").get("status"));
     }
 
-
+@Test
+    public void bufferReports() throws Exception{
+    String url = "https://egiptest.mos.ru/egip/services/reports/buffer";
+    JtwigTemplate templateBody = JtwigTemplate.classpathTemplate("bufferReports.json");
+    JtwigModel model = JtwigModel.newModel()
+            .with("layerId", "15638420");
+    HttpResponse<JsonNode> jsonResponse = Unirest.post(url)
+            .body(templateBody.render(model))
+            .asJson();
+    assertEquals("OK", jsonResponse.getBody().getObject().get("result"));
+    assertEquals("BUFFER_REPORT", jsonResponse.getBody().getObject().getJSONObject("data").get("type"));
+    assertEquals("SCHEDULED", jsonResponse.getBody().getObject().getJSONObject("data").get("status"));
+}
 }
 
 
