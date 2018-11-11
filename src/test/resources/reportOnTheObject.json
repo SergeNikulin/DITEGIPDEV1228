@@ -1,0 +1,6 @@
+{
+    "layerId": {{layerId}},
+    "featureId": "{{featureId}}",
+    "startDate": "2018-01-01T00:00:01.000",
+    "endDate": "2018-12-31T23:59:59.000"
+}
