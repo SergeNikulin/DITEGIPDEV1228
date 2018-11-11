@@ -2,6 +2,7 @@ package pages;
 
 import com.mashape.unirest.http.Unirest;
 import org.junit.After;
+import org.junit.AfterClass;
 import org.junit.Before;
 
 import java.io.IOException;
@@ -22,8 +23,8 @@ public class BaseReport {
 
     }
 
-    @After
-    public void shutdown() throws IOException {
+    @AfterClass
+    public static void shutdown() throws IOException {
         Unirest.shutdown();
     }
 }
