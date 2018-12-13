@@ -11,10 +11,10 @@ public class BaseReport {
     @Before
     public void authorization() throws Exception {
         Unirest.setDefaultHeader("Content-Type", "application/json");
-        String login = "https://egiptest.mos.ru/egip/login";
+        String login = "http://egiptest.mos.ru/egip/login";
         String bodyPost = "{  \n" +
                 "    \"login\": \"sys\",\n" +
-                "    \"password\": \"123456\"\n" +
+                "    \"password\": \"!23456QWEqwe\"\n" +
                 "}";
 
         Unirest.post(login)
@@ -24,7 +24,7 @@ public class BaseReport {
     }
 
     @AfterClass
-    public static void shutdown() throws IOException {
+    public static void shutdown() throws Exception {
         Unirest.shutdown();
     }
 }

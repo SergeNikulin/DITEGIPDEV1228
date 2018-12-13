@@ -23,7 +23,7 @@ public class FromTables {
     @FindBy (xpath = "//div[@id='__BVID__3__BV_tab_container_']/div[1]/form[1]/button[@type='submit']")
     private WebElement buttonGetTables;
 
-    @FindBy (xpath = "//div[@id='__BVID__3__BV_tab_container_']/div[1]/div/select")
+    @FindBy (xpath = "//div[@id='__BVID__3__BV_tab_container_']/div[1]/div[@role='alert']")
     private WebElement getSelectTables;
 
     public WebElement getDataConnect(){
