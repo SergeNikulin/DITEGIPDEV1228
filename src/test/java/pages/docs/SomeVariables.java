@@ -1,15 +1,35 @@
 package pages.docs;
 
 public class SomeVariables {
-    public static String readmeBlockCode = "<script src=\"http://egiptest.gost-group.com/jsapi/dist/egip.api.js\"></script>\n" +
+    public static String readmeBlockCode = "<link  href=\"http://egiptest.mos.ru/jsapi/lib/ol-5.2.0.css\" rel=\"stylesheet\" type=\"text/css\">\n" +
+            "<link  href=\"http://egiptest.mos.ru/jsapi/lib/ol-ext-3.0.1.css\" rel=\"stylesheet\" type=\"text/css\">\n" +
+            "<!-- ... -->\n" +
+            "<script src=\"http://egiptest.mos.ru/jsapi/lib/proj4-2.4.4.js\"></script>\n" +
+            "<script src=\"http://egiptest.mos.ru/jsapi/lib/ol-5.2.0.js\"></script>\n" +
+            "<script src=\"http://egiptest.mos.ru/jsapi/lib/ol-ext-3.0.1.js\"></script>\n" +
+            "<script src=\"http://egiptest.mos.ru/jsapi/dist/egip.js\"></script>\n" +
             "<script >\n" +
+            "  egip.setConfig({\n" +
             "\n" +
-            "  const egip = window.egip\n" +
+            "    /** `baseURL` will be prepended to `url` unless `url` is absolute.\n" +
+            "     *  It can be convenient to set `baseURL` for an instance of axios to pass relative URLs\n" +
+            "     *  to methods of that instance.\n" +
+            "     *  https://github.com/axios/axios\n" +
+            "    */\n" +
+            "    baseURL: 'http://example.com/',\n" +
             "\n" +
-            "  egip.api.setAxiosDefaults({\n" +
-            "    baseURL: 'http://example.com/'\n" +
+            "    apiKey: 'exampleApiKey',\n" +
+            "\n" +
+            "    /**\n" +
+            "     * `withCredentials` indicates whether or not cross-site Access-Control requests\n" +
+            "     *  should be made using credentials\n" +
+            "     *  https://github.com/axios/axios\n" +
+            "    */\n" +
+            "    withCredentials: true\n" +
             "  })\n" +
             "\n" +
+            "  window.egip.api...\n" +
+            "  window.egip.layers...\n" +
             "</script>";
 
     public static String layersWMS = "https://gost-jira.atlassian.net/wiki/spaces/EGIPAPIDOC/pages/436699311/API";
@@ -35,15 +55,14 @@ public class SomeVariables {
             "19\n" +
             "var example;\n" +
             "(function (example) {\n" +
-            "    console.info(egipExamplesConfig[location.hostname]);\n" +
-            "    const { pano_shape_3857, GKN_ZU_3857, egko_metro_3857 } = egipExamplesConfig[location.hostname];\n" +
-            "    egip.api.setAxiosDefaults({\n" +
-            "        baseURL: '/'\n" +
+            "    egip.setConfig({\n" +
+            "        baseURL: '/',\n" +
+            "        apiKey: 'exampleApiKey'\n" +
             "    });\n" +
             "    async function main() {\n" +
             "        await egip.api.login({\n" +
             "            login: 'sys',\n" +
-            "            password: '123456'\n" +
+            "            password: '!23456QWEqwe'\n" +
             "        })\n" +
             "            .catch(err => console.warn(err));\n" +
             "        const map = egip.layers.createMap({\n" +
@@ -51,5 +70,6 @@ public class SomeVariables {
             "            controls: ol.control.defaults({\n" +
             "                attribution: false\n" +
             "            }),\n" +
-            "        });";
+            "        });\n" +
+            "        egip.layers.switchMapTo3857(map);";
 }

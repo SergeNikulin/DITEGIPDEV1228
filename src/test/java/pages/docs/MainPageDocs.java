@@ -20,7 +20,7 @@ public class MainPageDocs {
     @FindBy(id = "Старт")
     private WebElement readmeBegin;
 
-    @FindBy(css = ":nth-child(10) .lang-html")
+    @FindBy(xpath = "//article[@id='main']//code[@class='lang-html']")
     private WebElement readmeBlockCode;
 
     @FindBy(linkText = "Получение слоев (WMS)")

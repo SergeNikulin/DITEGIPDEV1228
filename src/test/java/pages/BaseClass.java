@@ -39,7 +39,7 @@ public class BaseClass {
         System.setProperty(ConfigProperties.getTestProperty("whatWebDriver"), ConfigProperties.getTestProperty("whereWebDriver"));
         driver = new ChromeDriver();
         action = new Actions(driver);
-        wait = new WebDriverWait(driver, 5);
+        wait = new WebDriverWait(driver, 15);
         authorization = new Authorization(driver);
         mainPageGis = new MainPageGis(driver);
         authorizationAdmin = new AuthorizationAdmin(driver);

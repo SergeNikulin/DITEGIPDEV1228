@@ -22,6 +22,6 @@ public class DataManagementRESTTest extends BaseReport {
                 .body(templateBody.render(model))
                 .asJson();
         assertEquals("FAIL", jsonResponse.getBody().getObject().get("result"));
-        assertEquals("VALIDATION_ERROR", jsonResponse.getBody().getObject().get("errorCode"));
+        assertEquals("VALIDATION_ERROR", jsonResponse.getBody().getObject().get("code"));
     }
 }

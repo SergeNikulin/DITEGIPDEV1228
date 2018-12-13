@@ -30,6 +30,22 @@ public class MainPageGis extends Authorization{
     @FindBy(xpath = "//div[@id='root']/section/div[4]/p")
     private WebElement buttonLogout;
 
+    @FindBy (xpath = "//span[.='Продовольственные магазины']")
+    private WebElement layerProdShop;
+
+    @FindBy (xpath = "/html/body/div[6]/div/div/ul[@role='menu']/li[3]")
+    private WebElement showInTable;
+
+    public void clickShowInTable(){
+        showInTable.click();
+    }
+
+    public WebElement getShowInTable(){
+        return showInTable;
+    }
+    public WebElement getLayerProdShop(){
+        return layerProdShop;
+    }
 
     public String getInputSearchCatalog() {
         return inputSearchCatalog.getAttribute("placeholder");

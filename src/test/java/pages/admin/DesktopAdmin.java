@@ -1,5 +1,6 @@
 package pages.admin;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -20,15 +21,24 @@ public class DesktopAdmin extends AuthorizationAdmin{
     @FindBy (xpath = "//main//a[@href='#/organizations']")
     private WebElement buttonOrg;
 
-    @FindBy (css = "[href='\\#\\/login']")
+    @FindBy (xpath = "//ul[@id='SubMenu-user$Menu']//a[@href='#/login']")
     private WebElement buttonLogout;
 
-    @FindBy (xpath = "//a[@href='#/']")
+    @FindBy (xpath = "//div[@id='root']/div//a[@href='#/']")
     private WebElement jumpToMain;
 
     @FindBy (css = ".anticon-user")
     private WebElement userMenu;
 
+    @FindBy (xpath = "//div[@type='success']")
+    private WebElement windowSuccess;
+
+    @FindBy (xpath = "//div[@type='success']//i[@class='anticon anticon-close']")
+    private WebElement closeSuccess;
+
+    public void clickCloseSuccess(){closeSuccess.click();}
+
+    public WebElement getWindowSuccess(){return windowSuccess;}
 
     public WebElement getUserMenu(){
         return userMenu;
@@ -50,6 +60,7 @@ public class DesktopAdmin extends AuthorizationAdmin{
         buttonLogout.click();
     }
 
+    public WebElement getJumpToMain(){return jumpToMain;}
     public void clickJumpToMain(){
         jumpToMain.click();
     }

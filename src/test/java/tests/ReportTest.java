@@ -16,7 +16,7 @@ public class ReportTest extends BaseReport {
 
     @Test
     public void intersectionReport() throws Exception {
-        String url = "https://egiptest.mos.ru/egip/layers/construction/layer-intersection";
+        String url = "http://egiptest.mos.ru/egip/layers/construction/layer-intersection";
         JtwigTemplate templateBody = JtwigTemplate.classpathTemplate("intersectionReport.json");
         JtwigModel model = JtwigModel.newModel()
                 .with("layerId", "15640542")
@@ -31,7 +31,7 @@ public class ReportTest extends BaseReport {
         //Получили ID задачи и проверям что она запущена и работает.
         String taskId = jsonResponse.getBody().getObject().getJSONObject("data").get("id").toString();
 
-        String urlTask = "https://egiptest.mos.ru/egip/services/tasks/{Id_task}/result";
+        String urlTask = "http://egiptest.mos.ru/egip/services/tasks/{Id_task}/result";
         HttpResponse<JsonNode> jsonResponseTask = Unirest.get(urlTask)
                 .routeParam("Id_task", taskId)
                 .asJson();
@@ -41,7 +41,7 @@ public class ReportTest extends BaseReport {
 
     @Test
     public void reportOnTheObject() throws Exception {
-        String url = "https://egiptest.mos.ru/egip/services/reports/feature";
+        String url = "http://egiptest.mos.ru/egip/services/reports/feature";
         JtwigTemplate templateBody = JtwigTemplate.classpathTemplate("reportOnTheObject.json");
         JtwigModel model = JtwigModel.newModel()
                 .with("layerId", "15638420")
@@ -56,7 +56,7 @@ public class ReportTest extends BaseReport {
         //Получили ID задачи и проверям что она запущена и работает.
         String taskId = jsonResponse.getBody().getObject().getJSONObject("data").get("id").toString();
 
-        String urlTask = "https://egiptest.mos.ru/egip/services/tasks/{Id_task}/result";
+        String urlTask = "http://egiptest.mos.ru/egip/services/tasks/{Id_task}/result";
         HttpResponse<JsonNode> jsonResponseTask = Unirest.get(urlTask)
                 .routeParam("Id_task", taskId)
                 .asJson();
@@ -66,7 +66,7 @@ public class ReportTest extends BaseReport {
 
     @Test
     public void metricsReports() throws Exception {
-        String url = "https://egiptest.mos.ru/egip/services/reports/metrics";
+        String url = "http://egiptest.mos.ru/egip/services/reports/metrics";
         JtwigTemplate templateBody = JtwigTemplate.classpathTemplate("metricsReports.json");
         JtwigModel model = JtwigModel.newModel()
                 .with("layerId", "15638420")
@@ -84,17 +84,17 @@ public class ReportTest extends BaseReport {
         //Получили ID задачи и проверям что она запущена и работает.
         String taskId = jsonResponse.getBody().getObject().getJSONObject("data").get("id").toString();
 
-        String urlTask = "https://egiptest.mos.ru/egip/services/tasks/{Id_task}/result";
+        String urlTask = "http://egiptest.mos.ru/egip/services/tasks/{Id_task}/result";
         HttpResponse<JsonNode> jsonResponseTask = Unirest.get(urlTask)
                 .routeParam("Id_task", taskId)
                 .asJson();
         assertEquals("OK", jsonResponseTask.getBody().getObject().get("result"));
-        assertEquals("IN_PROGRESS", jsonResponseTask.getBody().getObject().getJSONObject("data").get("status"));
+        assertEquals("FAILED", jsonResponseTask.getBody().getObject().getJSONObject("data").get("status"));
     }
 
 @Test
     public void bufferReports() throws Exception{
-    String url = "https://egiptest.mos.ru/egip/services/reports/buffer";
+    String url = "http://egiptest.mos.ru/egip/services/reports/buffer";
     JtwigTemplate templateBody = JtwigTemplate.classpathTemplate("bufferReports.json");
     JtwigModel model = JtwigModel.newModel()
             .with("layerId", "15641284");

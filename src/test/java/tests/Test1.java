@@ -4,6 +4,8 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import pages.BaseClass;
 import pages.docs.SomeVariables;
 import utils.ConfigProperties;
@@ -19,7 +21,7 @@ public class Test1 extends BaseClass {
         //Вход на страницу авторизации
         driver.get(ConfigProperties.getTestProperty("clientApplicationModule"));
         //ждем отрисовки элемента
-        wait.until(visibilityOfElementLocated(By.cssSelector("#root > div > section > span")));
+        wait.until(visibilityOfElementLocated(By.xpath("/html//div[@id='root']//form//span[.='Техподдержка: ']")));
         //проходим авторизацию
         authorization.inputItemLogin(ConfigProperties.getTestProperty("gis.login"));
         authorization.inputItemPassword(ConfigProperties.getTestProperty("gis.password"));
@@ -28,8 +30,8 @@ public class Test1 extends BaseClass {
         Thread.sleep(500);
         //еще ждем
         wait.until(visibilityOfElementLocated(By.xpath("//div[@id='root']/section/div[2]/div[5]")));
-        if (!driver.findElement(By.xpath("//div[@id='root']/section/section[1]/section[2]//span[.='Проект для теста']")).isDisplayed()) {
-            throw new RuntimeException("!!!Отсутствует элемент 'Проект для теста'!!!\n\n");
+        if (!driver.findElement(By.xpath("//div[@id='root']/section/section[1]/section[2]//span[.='WGS']")).isDisplayed()) {
+            throw new RuntimeException("!!!Отсутствует элемент 'WGS'!!!\n\n");
         }
         //проходимся по вкладками попутно проверяя наличие объектов
         mainPageGis.clickButtonLegend();
@@ -38,7 +40,7 @@ public class Test1 extends BaseClass {
         mainPageGis.clickButtonLibrary();
         wait.until(visibilityOfElementLocated(By.cssSelector("[placeholder]")));
         if (driver.findElement(By.cssSelector("[placeholder]")).isDisplayed()) {
-            Assert.assertEquals("поиск", mainPageGis.getInputSearchCatalog());
+            Assert.assertEquals("поиск в названии/описании", mainPageGis.getInputSearchCatalog());
 
         }
         if (driver.findElement(By.cssSelector(".ant-select-selection__rendered [unselectable]")).isDisplayed()) {
@@ -59,21 +61,26 @@ public class Test1 extends BaseClass {
         authorizationAdmin.setLogin(ConfigProperties.getTestProperty("admin.login"));
         authorizationAdmin.setPassword(ConfigProperties.getTestProperty("admin.password"));
         authorizationAdmin.clickButtonLogin();
-
+        /*if(desktopAdmin.getWindowSuccess().isDisplayed()){
+            desktopAdmin.clickCloseSuccess();
+        }*/
+        Thread.sleep(2000);
         wait.until(visibilityOfElementLocated(By.cssSelector(".anticon-user")));
         desktopAdmin.clickButtonUsers();
-        wait.until(visibilityOfElementLocated(By.xpath("//div[@id='root']/div/div//h1")));
+        Thread.sleep(2000);
+        wait.until(visibilityOfElementLocated(By.xpath("//h1[.='Пользователи']")));
+        wait.until(ExpectedConditions.visibilityOf(desktopAdmin.getJumpToMain()));
         desktopAdmin.clickJumpToMain();
         desktopAdmin.clickButtonRoles();
-        wait.until(visibilityOfElementLocated(By.xpath("//div[@id='root']/div/div//h1")));
+        wait.until(visibilityOfElementLocated(By.xpath("//h1[.='Роли']")));
+        Thread.sleep(2000);
         desktopAdmin.clickJumpToMain();
         desktopAdmin.clickButtonOrg();
-        wait.until(visibilityOfElementLocated(By.xpath("//div[@id='root']/div/div//h1")));
-        desktopAdmin.clickJumpToMain();
-        wait.until(visibilityOfElementLocated(By.cssSelector(".anticon-user")));
-        action.moveToElement(desktopAdmin.getUserMenu()).click().perform();
+        wait.until(visibilityOfElementLocated(By.xpath("//h1[.='Организации']")));
+        Thread.sleep(2000);
+        wait.until(visibilityOfElementLocated(By.xpath("//i[@class='anticon anticon-user']"))).click();
         desktopAdmin.clickButtonLogout();
-        Thread.sleep(1000);
+        Thread.sleep(2000);
         Assert.assertTrue(driver.findElement(By.cssSelector(".anticon-eye")).isDisplayed());
     }
 
@@ -140,11 +147,12 @@ public class Test1 extends BaseClass {
 
         jms.clickLinkJMS();
         jms.setTextArea("{ }");
+        Assert.assertTrue(jms.checkRadioButtonZero().isDisplayed());
+        Assert.assertTrue(jms.checkRadioButtonFirst().isDisplayed());
         jms.clickRadioButtonFirst();
-        jms.clickButtonSend();
-        Assert.assertEquals(jms.getResultMessage(),"×\n" +
-                "Сообщение отправлено успешно");
-
-
+        Assert.assertTrue(jms.checkRadioButtonFirst().isEnabled());
+        Assert.assertTrue(jms.checkRadioButtonSecond().isDisplayed());
+       //Позже займусь кнопкой.
+        // Assert.assertTrue(jms.getButtonSend().isDisplayed());
     }
 }
