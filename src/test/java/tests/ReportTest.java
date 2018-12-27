@@ -56,13 +56,13 @@ public class ReportTest extends BaseReport {
 
         //Получили ID задачи и проверям что она запущена и работает.
         String taskId = jsonResponse.getBody().getObject().getJSONObject("data").get("id").toString();
-        Thread.sleep(500);
+        Thread.sleep(3000);
         String urlTask = "http://egiptest.mos.ru/egip/services/tasks/{Id_task}/result";
         HttpResponse<JsonNode> jsonResponseTask = Unirest.get(urlTask)
                 .routeParam("Id_task", taskId)
                 .asJson();
         assertEquals("OK", jsonResponseTask.getBody().getObject().get("result"));
-        assertEquals("IN_PROGRESS", jsonResponseTask.getBody().getObject().getJSONObject("data").get("status"));
+        assertEquals("ACCOMPLISHED", jsonResponseTask.getBody().getObject().getJSONObject("data").get("status"));
     }
 
     @Test
