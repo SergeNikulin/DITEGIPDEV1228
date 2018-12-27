@@ -108,8 +108,9 @@ public class Test1 extends BaseClass {
         mainPageDocs.clickSlidebar();
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();"
                 , mainPageDocs.getLinkCluster());
+        Thread.sleep(3000);
         mainPageDocs.clickLinkCluster();
-        wait.until(visibilityOfElementLocated(By.xpath("//article[@id='main']//p[.='функция кластеризации точек выбранного слоя']")));
+        wait.until(visibilityOfElementLocated(By.xpath("//article[@id='main']//p")));
         Assert.assertEquals(mainPageDocs.getHeadCluster().getText(), "Кластеризация точек выбранного слоя");
         driver.switchTo().frame(driver.findElement(By.xpath("/html//article[@id='main']//iframe")));
         driver.switchTo().frame(driver.findElement(By.id("app")));

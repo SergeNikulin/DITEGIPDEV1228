@@ -31,6 +31,7 @@ public class ReportTest extends BaseReport {
         //Получили ID задачи и проверям что она запущена и работает.
         String taskId = jsonResponse.getBody().getObject().getJSONObject("data").get("id").toString();
 
+        Thread.sleep(2000);
         String urlTask = "http://egiptest.mos.ru/egip/services/tasks/{Id_task}/result";
         HttpResponse<JsonNode> jsonResponseTask = Unirest.get(urlTask)
                 .routeParam("Id_task", taskId)
@@ -55,7 +56,7 @@ public class ReportTest extends BaseReport {
 
         //Получили ID задачи и проверям что она запущена и работает.
         String taskId = jsonResponse.getBody().getObject().getJSONObject("data").get("id").toString();
-
+        Thread.sleep(500);
         String urlTask = "http://egiptest.mos.ru/egip/services/tasks/{Id_task}/result";
         HttpResponse<JsonNode> jsonResponseTask = Unirest.get(urlTask)
                 .routeParam("Id_task", taskId)
@@ -83,7 +84,7 @@ public class ReportTest extends BaseReport {
 
         //Получили ID задачи и проверям что она запущена и работает.
         String taskId = jsonResponse.getBody().getObject().getJSONObject("data").get("id").toString();
-
+        Thread.sleep(2000);
         String urlTask = "http://egiptest.mos.ru/egip/services/tasks/{Id_task}/result";
         HttpResponse<JsonNode> jsonResponseTask = Unirest.get(urlTask)
                 .routeParam("Id_task", taskId)

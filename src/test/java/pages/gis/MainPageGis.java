@@ -27,7 +27,7 @@ public class MainPageGis extends Authorization{
     @FindBy(css = ".ant-select-selection__rendered [unselectable]")
     private WebElement inputSrchLayerCatalog;
 
-    @FindBy(xpath = "//div[@id='root']/section/div[4]/p")
+    @FindBy(xpath = "//div[@id='root']/section//p[.='sys']")
     private WebElement buttonLogout;
 
     @FindBy (xpath = "//span[.='Продовольственные магазины']")
