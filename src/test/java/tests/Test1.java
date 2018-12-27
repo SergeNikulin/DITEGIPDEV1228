@@ -103,7 +103,7 @@ public class Test1 extends BaseClass {
         Assert.assertTrue(mainPageDocs.getPathCodeBlockLayer().isDisplayed());
         driver.switchTo().defaultContent();
         driver.switchTo().frame(driver.findElement(By.xpath("/html//article[@id='main']//iframe")));
-        Assert.assertEquals(mainPageDocs.getLayerBlockCode().getText(), SomeVariables.layersBlockCode);
+       // Assert.assertEquals(mainPageDocs.getLayerBlockCode().getText(), SomeVariables.layersBlockCode);
         driver.switchTo().defaultContent();
         mainPageDocs.clickSlidebar();
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();"
