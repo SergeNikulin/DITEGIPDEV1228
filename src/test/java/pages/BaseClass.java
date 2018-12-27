@@ -16,6 +16,9 @@ import pages.egipImport.JMS;
 import pages.gis.Authorization;
 import pages.gis.MainPageGis;
 import utils.ConfigProperties;
+import org.apache.log4j.Logger;
+import org.apache.log4j.xml.DOMConfigurator;
+import utils.Log;
 
 import java.util.concurrent.TimeUnit;
 
@@ -34,8 +37,10 @@ public class BaseClass {
     protected static FromODOPM fromODOPM;
     protected static JMS jms;
 
+
     @Before
     public void setup() {
+        Log.startLog("...Test starting!!!");
         System.setProperty(ConfigProperties.getTestProperty("whatWebDriver"), ConfigProperties.getTestProperty("whereWebDriver"));
         driver = new ChromeDriver();
         action = new Actions(driver);
@@ -55,7 +60,10 @@ public class BaseClass {
 
     @After
     public void toEnd() {
+        //Log.endLog("Test is ending!!!");
+        Log.info("******************************************************************************************************");
         driver.close();
         driver.quit();
+
     }
 }
