@@ -1,6 +1,7 @@
 package tests;
 
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import pages.BaseClass;
@@ -9,7 +10,7 @@ import utils.ConfigProperties;
 import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOfElementLocated;
 
 public class DataManagementUITest extends BaseClass {
-    @Test
+    @Ignore
     public void dataTypeChecking() throws Exception{
         //Вход на страницу авторизации
         driver.get(ConfigProperties.getTestProperty("clientApplicationModule"));

@@ -23,8 +23,8 @@ public class BaseReport {
 
     }
 
-    @AfterClass
+    /*@AfterClass
     public static void shutdown() throws Exception {
         Unirest.shutdown();
-    }
+    }*/
 }
