@@ -11,6 +11,7 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOfElem
 
 public class DataManagementUITest extends BaseClass {
     @Ignore
+    @Test
     public void dataTypeChecking() throws Exception{
         //Вход на страницу авторизации
         driver.get(ConfigProperties.getTestProperty("clientApplicationModule"));
