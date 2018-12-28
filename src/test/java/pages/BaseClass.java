@@ -15,6 +15,7 @@ import pages.egipImport.FromTables;
 import pages.egipImport.JMS;
 import pages.gis.Authorization;
 import pages.gis.MainPageGis;
+import pages.gis.Zabbix;
 import utils.ConfigProperties;
 import org.apache.log4j.Logger;
 import org.apache.log4j.xml.DOMConfigurator;
@@ -36,6 +37,7 @@ public class BaseClass {
     protected static FromArchive fromArchive;
     protected static FromODOPM fromODOPM;
     protected static JMS jms;
+    protected static Zabbix zabbix;
 
 
     @Before
@@ -54,6 +56,7 @@ public class BaseClass {
         fromArchive = new FromArchive(driver);
         fromODOPM = new FromODOPM(driver);
         jms = new JMS(driver);
+        zabbix= new Zabbix(driver);
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
