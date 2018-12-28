@@ -15,10 +15,10 @@ public class DesktopAdmin extends AuthorizationAdmin{
     @FindBy (xpath = "//main//a[@href='#/users']")
     private WebElement buttonUsers;
 
-    @FindBy (xpath = "//main//a[@href='#/roles']")
+    @FindBy (xpath = "//div[@id='root']/div/div/main//a[@href='#/role']")
     private WebElement buttonRoles;
 
-    @FindBy (xpath = "//main//a[@href='#/organizations']")
+    @FindBy (xpath = "//div[@id='root']/div/div/main//a[@href='#/organization']")
     private WebElement buttonOrg;
 
     @FindBy (xpath = "//ul[@id='SubMenu-user$Menu']//a[@href='#/login']")
