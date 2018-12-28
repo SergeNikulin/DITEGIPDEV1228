@@ -6,62 +6,69 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 
-public class DesktopAdmin extends AuthorizationAdmin{
+public class DesktopAdmin extends AuthorizationAdmin {
 
     public DesktopAdmin(WebDriver driver) {
         super(driver);
     }
 
-    @FindBy (xpath = "//main//a[@href='#/users']")
+    @FindBy(xpath = "//main//a[@href='#/users']")
     private WebElement buttonUsers;
 
-    @FindBy (xpath = "//div[@id='root']/div/div/main//a[@href='#/role']")
+    @FindBy(xpath = "//div[@id='root']/div/div/main//a[@href='#/role']")
     private WebElement buttonRoles;
 
-    @FindBy (xpath = "//div[@id='root']/div/div/main//a[@href='#/organization']")
+    @FindBy(xpath = "//div[@id='root']/div/div/main//a[@href='#/organization']")
     private WebElement buttonOrg;
 
-    @FindBy (xpath = "//ul[@id='SubMenu-user$Menu']//a[@href='#/login']")
+    @FindBy(xpath = "//ul[@id='SubMenu-user$Menu']//a[@href='#/login']")
     private WebElement buttonLogout;
 
-    @FindBy (xpath = "//div[@id='root']/div//a[@href='#/']")
+    @FindBy(xpath = "//div[@id='root']/div//a[@href='#/']")
     private WebElement jumpToMain;
 
-    @FindBy (css = ".anticon-user")
+    @FindBy(css = ".anticon-user")
     private WebElement userMenu;
 
-    @FindBy (xpath = "//div[@type='success']")
+    @FindBy(xpath = "//div[@type='success']")
     private WebElement windowSuccess;
 
-    @FindBy (xpath = "//div[@type='success']//i[@class='anticon anticon-close']")
+    @FindBy(xpath = "//div[@type='success']//i[@class='anticon anticon-close']")
     private WebElement closeSuccess;
 
-    public void clickCloseSuccess(){closeSuccess.click();}
+    public void clickCloseSuccess() {
+        closeSuccess.click();
+    }
 
-    public WebElement getWindowSuccess(){return windowSuccess;}
+    public WebElement getWindowSuccess() {
+        return windowSuccess;
+    }
 
-    public WebElement getUserMenu(){
+    public WebElement getUserMenu() {
         return userMenu;
     }
 
-    public void clickButtonUsers(){
+    public void clickButtonUsers() {
         buttonUsers.click();
     }
 
-    public void clickButtonRoles(){
+    public void clickButtonRoles() {
         buttonRoles.click();
     }
 
-    public void clickButtonOrg(){
+    public void clickButtonOrg() {
         buttonOrg.click();
     }
 
-    public void clickButtonLogout(){
+    public void clickButtonLogout() {
         buttonLogout.click();
     }
 
-    public WebElement getJumpToMain(){return jumpToMain;}
-    public void clickJumpToMain(){
+    public WebElement getJumpToMain() {
+        return jumpToMain;
+    }
+
+    public void clickJumpToMain() {
         jumpToMain.click();
     }
 }

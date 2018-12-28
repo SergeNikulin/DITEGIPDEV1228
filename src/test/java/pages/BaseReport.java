@@ -11,7 +11,7 @@ import java.io.IOException;
 public class BaseReport {
     @Before
     public void authorization() throws Exception {
-        Log.startLog("...Test Reporting is starting!!!");
+        Log.info("******************************************************************************************************");
         Unirest.setDefaultHeader("Content-Type", "application/json");
         String login = "http://egiptest.mos.ru/egip/login";
         String bodyPost = "{  \n" +
@@ -27,7 +27,6 @@ public class BaseReport {
 
     @After
     public void shutdown() throws Exception {
-        //Log.endLog("Test is ending!!!");
         Log.info("******************************************************************************************************");
     }
 }

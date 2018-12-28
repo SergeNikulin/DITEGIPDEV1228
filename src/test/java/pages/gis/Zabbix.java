@@ -13,52 +13,52 @@ public class Zabbix {
         this.driver = driver;
     }
 
-    @FindBy (xpath = "//ul[@id='sub_view']//a[@href='charts.php?ddreset=1']")
+    @FindBy(xpath = "//ul[@id='sub_view']//a[@href='charts.php?ddreset=1']")
     WebElement graphs;
 
-    @FindBy (xpath = "/html//select[@id='graphid']")
+    @FindBy(xpath = "/html//select[@id='graphid']")
     WebElement graphsSelect;
 
     @FindBy(xpath = "//select[@id='graphid']/option[@value='525']")
     WebElement utilizationCPU;
 
-    @FindBy (xpath = "/html//img[@id='graph_full']")
+    @FindBy(xpath = "/html//img[@id='graph_full']")
     WebElement graphFull;
 
-    @FindBy (xpath = "//body//div[@class='header-title table']/div[@class='cell nowrap']/ul//form[@action='charts.php']/ul//select[@name='hostid']")
+    @FindBy(xpath = "//body//div[@class='header-title table']/div[@class='cell nowrap']/ul//form[@action='charts.php']/ul//select[@name='hostid']")
     WebElement selectHostid;
 
-    @FindBy (xpath = "//body//div[@class='cell nowrap']/ul//form[@action='charts.php']/ul//select[@name='hostid']/option[@value='10262']")
+    @FindBy(xpath = "//body//div[@class='cell nowrap']/ul//form[@action='charts.php']/ul//select[@name='hostid']/option[@value='10262']")
     WebElement selectEGIPDBS02T;
 
-    @FindBy (xpath = "//select[@id='graphid']/option[@value='833']")
+    @FindBy(xpath = "//select[@id='graphid']/option[@value='833']")
     WebElement networkTraffic;
 
-    public void selectNetworkTraffic(){
+    public void selectNetworkTraffic() {
         networkTraffic.click();
     }
 
-    public void clickSeclectEGIPDBS02T(){
+    public void clickSeclectEGIPDBS02T() {
         selectEGIPDBS02T.click();
     }
 
-    public void clickSelectHostid(){
+    public void clickSelectHostid() {
         selectHostid.click();
     }
 
-    public WebElement getGraphFull(){
+    public WebElement getGraphFull() {
         return graphFull;
     }
 
-    public void clickGraphs(){
+    public void clickGraphs() {
         graphs.click();
     }
 
-    public void clickGraphsSelect(){
+    public void clickGraphsSelect() {
         graphsSelect.click();
     }
 
-    public void clickUtilizationCPU(){
+    public void clickUtilizationCPU() {
         utilizationCPU.click();
     }
 }
