@@ -20,7 +20,7 @@ public class ReportTest extends BaseReport {
     @Test
     public void intersectionReport() {
         try {
-            Log.info("Test " + Thread.currentThread().getStackTrace()[1].getMethodName() + " is run!");
+            Log.startLog(Thread.currentThread().getStackTrace()[1].getMethodName());
             String url = "http://egiptest.mos.ru/egip/layers/construction/layer-intersection";
             Log.info("Appeal to API on URL.");
             JtwigTemplate templateBody = JtwigTemplate.classpathTemplate("intersectionReport.json");
@@ -57,7 +57,7 @@ public class ReportTest extends BaseReport {
     @Test
     public void reportOnTheObject() {
         try {
-            Log.info("Test " + Thread.currentThread().getStackTrace()[1].getMethodName() + " is run!");
+            Log.startLog(Thread.currentThread().getStackTrace()[1].getMethodName());
             String url = "http://egiptest.mos.ru/egip/services/reports/feature";
             Log.info("Appeal to API on URL.");
             JtwigTemplate templateBody = JtwigTemplate.classpathTemplate("reportOnTheObject.json");
@@ -86,6 +86,8 @@ public class ReportTest extends BaseReport {
         } catch (Exception e) {
             Log.error("TEST FAIL!!!!!!", e);
             Assert.fail("TEST FAIL!!!!!!");
+        } finally {
+            Log.endLog(Thread.currentThread().getStackTrace()[1].getMethodName());
         }
     }
 
@@ -93,7 +95,7 @@ public class ReportTest extends BaseReport {
     @Test
     public void metricsReports() throws Exception {
         try {
-            Log.info("Test " + Thread.currentThread().getStackTrace()[1].getMethodName() + " is run!");
+            Log.startLog(Thread.currentThread().getStackTrace()[1].getMethodName());
             String url = "http://egiptest.mos.ru/egip/services/reports/metrics";
             Log.info("Appeal to API on URL.");
             JtwigTemplate templateBody = JtwigTemplate.classpathTemplate("metricsReports.json");
@@ -132,7 +134,7 @@ public class ReportTest extends BaseReport {
     @Test
     public void bufferReports() {
         try {
-            Log.info("Test " + Thread.currentThread().getStackTrace()[1].getMethodName() + " is run!");
+            Log.startLog(Thread.currentThread().getStackTrace()[1].getMethodName());
             String url = "http://egiptest.mos.ru/egip/services/reports/buffer";
             Log.info("Appeal to API on URL.");
             JtwigTemplate templateBody = JtwigTemplate.classpathTemplate("bufferReports.json");

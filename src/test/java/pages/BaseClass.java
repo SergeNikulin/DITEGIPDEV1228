@@ -42,7 +42,7 @@ public class BaseClass {
 
     @Before
     public void setup() {
-        Log.startLog("...Test starting!!!");
+        Log.info("******************************************************************************************************");
         System.setProperty(ConfigProperties.getTestProperty("whatWebDriver"), ConfigProperties.getTestProperty("whereWebDriver"));
         driver = new ChromeDriver();
         action = new Actions(driver);
@@ -56,7 +56,7 @@ public class BaseClass {
         fromArchive = new FromArchive(driver);
         fromODOPM = new FromODOPM(driver);
         jms = new JMS(driver);
-        zabbix= new Zabbix(driver);
+        zabbix = new Zabbix(driver);
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }

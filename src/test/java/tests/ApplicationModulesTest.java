@@ -20,7 +20,7 @@ public class ApplicationModulesTest extends BaseClass {
     @Test
     public void checkingAvailabilityClientApplicationModule() {
         try {
-            Log.info("Test " + Thread.currentThread().getStackTrace()[1].getMethodName() + " is run!");
+            Log.startLog(Thread.currentThread().getStackTrace()[1].getMethodName());
             //Вход на страницу авторизации
             Log.info("Opening the login page - OK");
             driver.get(ConfigProperties.getTestProperty("clientApplicationModule"));
@@ -65,13 +65,15 @@ public class ApplicationModulesTest extends BaseClass {
         } catch (Exception e) {
             Log.error("TEST FAIL!!!!!!", e);
             Assert.fail("TEST FAIL!!!!!!");
+        } finally {
+            Log.endLog(Thread.currentThread().getStackTrace()[1].getMethodName());
         }
     }
 
     @Test
     public void availabilityAdministrationModule() {
         try {
-            Log.info("Test " + Thread.currentThread().getStackTrace()[1].getMethodName() + " is run!");
+            Log.startLog(Thread.currentThread().getStackTrace()[1].getMethodName());
             //Вход на страницу авторизации
             driver.get(ConfigProperties.getTestProperty("administrationModule"));
             wait.until(visibilityOfElementLocated(By.cssSelector(".anticon-eye")));
@@ -111,13 +113,15 @@ public class ApplicationModulesTest extends BaseClass {
         } catch (Exception e) {
             Log.error("TEST FAIL!!!!!!", e);
             Assert.fail("TEST FAIL!!!!!!");
+        } finally {
+            Log.endLog(Thread.currentThread().getStackTrace()[1].getMethodName());
         }
     }
 
     @Test
     public void functionalMonitoringSystemZabbix() {
         try {
-            Log.info("Test " + Thread.currentThread().getStackTrace()[1].getMethodName() + " is run!");
+            Log.startLog(Thread.currentThread().getStackTrace()[1].getMethodName());
             //Вход на страницу авторизации
             Log.info("Opening the login page - OK");
             driver.get(ConfigProperties.getTestProperty("clientApplicationModule"));
@@ -161,6 +165,8 @@ public class ApplicationModulesTest extends BaseClass {
         } catch (Exception e) {
             Log.error("TEST FAIL!!!!!!", e);
             Assert.fail("TEST FAIL!!!!!!");
+        } finally {
+            Log.endLog(Thread.currentThread().getStackTrace()[1].getMethodName());
         }
     }
 
@@ -168,6 +174,7 @@ public class ApplicationModulesTest extends BaseClass {
     @Ignore
     @Test
     public void test3() throws Exception {
+        Log.startLog(Thread.currentThread().getStackTrace()[1].getMethodName());
         driver.get(ConfigProperties.getTestProperty("dataConsumerInteractionModule"));
         wait.until(visibilityOfElementLocated(By.cssSelector(".app-name-link")));
         Assert.assertTrue(mainPageDocs.getReadmeResource().isDisplayed());
@@ -206,6 +213,7 @@ public class ApplicationModulesTest extends BaseClass {
     @Ignore
     @Test
     public void test2() throws Exception {
+        Log.startLog(Thread.currentThread().getStackTrace()[1].getMethodName());
         driver.get(ConfigProperties.getTestProperty("dataProviderInteractionModule"));
         //Проверяем первую вкладку
         wait.until(visibilityOfElementLocated(By.cssSelector("#__BVID__3__BV_tab_controls_ .nav-item:nth-of-type(1) [href]")));
